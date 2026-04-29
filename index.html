@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Naya Bharat Engineering — Mining & Crusher Spares, Built for Uptime</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ink:#0E0E10;
+    --ink-2:#1A1A1D;
+    --ink-3:#3A3A40;
+    --muted:#6B6B72;
+    --hairline:#E2DDD3;
+    --hairline-strong:#CFC8B9;
+    --paper:#F5F2ED;
+    --paper-2:#EDE8DD;
+    --card:#FFFFFF;
+    --accent: oklch(0.68 0.17 50);   /* refined safety amber */
+    --accent-ink: oklch(0.42 0.13 45);
+    --ok: oklch(0.62 0.13 150);
+    --display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+    --sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+    --maxw: 1440px;
+    --pad: clamp(20px, 4vw, 56px);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    font-size:16px;
+    line-height:1.5;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+  ::selection{background:var(--ink);color:var(--paper)}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding-left:var(--pad); padding-right:var(--pad)}
+  .mono{font-family:var(--mono); letter-spacing:.02em; text-transform:uppercase; font-size:11px; color:var(--ink-3)}
+  .display{font-family:var(--display); font-weight:600; letter-spacing:-0.025em; line-height:0.95}
+  .eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); display:inline-flex; align-items:center; gap:10px}
+  .eyebrow::before{content:""; width:18px; height:1px; background:var(--ink-3); display:inline-block}
+
+  /* ==== Top utility bar ==== */
+  .util{
+    border-bottom:1px solid var(--hairline);
+    background:var(--ink); color:var(--paper);
+    font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+  }
+  .util .row{display:flex; align-items:center; justify-content:space-between; height:36px}
+  .util .left{display:flex; gap:24px; opacity:.85}
+  .util .right{display:flex; gap:18px; align-items:center}
+  .pulse{display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 0 oklch(0.68 0.17 50 / .6); animation:pulse 1.8s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 oklch(0.68 0.17 50 / .55)} 70%{box-shadow:0 0 0 10px oklch(0.68 0.17 50 / 0)} 100%{box-shadow:0 0 0 0 oklch(0.68 0.17 50 / 0)}}
+
+  /* ==== Nav ==== */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(245,242,237,.86);
+    backdrop-filter: saturate(140%) blur(12px);
+    border-bottom:1px solid var(--hairline);
+  }
+  .nav .row{display:flex; align-items:center; justify-content:space-between; height:78px}
+  .logo{display:flex; align-items:center; gap:12px}
+  .logo-mark{
+    width:38px; height:38px; position:relative;
+    background:var(--ink); border-radius:6px;
+    display:grid; place-items:center; color:var(--paper);
+    font-family:var(--display); font-weight:700; letter-spacing:-.02em;
+  }
+  .logo-mark::after{
+    content:""; position:absolute; right:-3px; bottom:-3px; width:10px; height:10px;
+    background:var(--accent); border-radius:2px;
+  }
+  .logo-text{display:flex; flex-direction:column; line-height:1}
+  .logo-text b{font-family:var(--display); font-weight:700; font-size:17px; letter-spacing:-.01em}
+  .logo-text span{font-family:var(--mono); font-size:9.5px; letter-spacing:.18em; color:var(--muted); text-transform:uppercase; margin-top:4px}
+  .nav-links{display:flex; gap:34px}
+  .nav-links a{font-size:14px; font-weight:500; color:var(--ink-2); position:relative; padding:8px 0}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a.has-caret::after{content:"›"; display:inline-block; transform:rotate(90deg) translateX(2px); margin-left:6px; color:var(--muted); font-size:12px}
+  .nav-cta{display:flex; gap:10px; align-items:center}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:13px 18px; border-radius:999px; font-weight:500; font-size:14px;
+    transition:transform .25s ease, background .25s ease, color .25s ease;
+  }
+  .btn-primary{background:var(--ink); color:var(--paper)}
+  .btn-primary:hover{background:var(--accent-ink)}
+  .btn-ghost{border:1px solid var(--hairline-strong); color:var(--ink-2)}
+  .btn-ghost:hover{border-color:var(--ink); background:var(--ink); color:var(--paper)}
+  .btn .arrow{transition:transform .25s ease}
+  .btn:hover .arrow{transform:translateX(3px)}
+
+  /* ==== HERO ==== */
+  .hero{padding:80px 0 0; position:relative; overflow:hidden}
+  .hero-grid{display:grid; grid-template-columns: 1.35fr .9fr; gap:64px; align-items:end}
+  .hero h1{
+    font-family:var(--display); font-weight:600;
+    font-size: clamp(56px, 9.2vw, 168px);
+    line-height:.92; letter-spacing:-0.04em;
+    margin:0;
+  }
+  .hero h1 .accent{font-style:italic; color:var(--accent-ink); font-weight:500}
+  .hero h1 .stroke{
+    -webkit-text-stroke:1.5px var(--ink); color:transparent;
+  }
+  .hero-meta{display:flex; flex-direction:column; gap:20px; padding-bottom:8px}
+  .hero-lede{font-size:18px; line-height:1.45; color:var(--ink-2); max-width:46ch}
+  .hero-lede b{font-weight:600; color:var(--ink)}
+  .hero-cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
+  .hero-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px}
+  .tag{
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
+    padding:7px 11px; border:1px solid var(--hairline-strong); border-radius:999px; color:var(--ink-2);
+    background:rgba(255,255,255,.6);
+  }
+  .tag .dot{width:5px; height:5px; border-radius:50%; background:var(--accent); display:inline-block; margin-right:8px; vertical-align:middle}
+
+  /* hero ticker rail */
+  .hero-rail{
+    margin-top:80px;
+    border-top:1px solid var(--hairline);
+    border-bottom:1px solid var(--hairline);
+    padding:18px 0;
+    overflow:hidden;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,.4));
+  }
+  .ticker{display:flex; gap:64px; animation: ticker 40s linear infinite; width:max-content; align-items:center}
+  .ticker > div{display:flex; gap:14px; align-items:center; font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-2); white-space:nowrap}
+  .ticker .num{font-family:var(--display); font-weight:600; font-size:18px; letter-spacing:-.02em; color:var(--ink)}
+  .ticker .sep{width:6px; height:6px; background:var(--accent); transform:rotate(45deg)}
+  @keyframes ticker{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+
+  /* hero side card */
+  .hero-card{
+    background:var(--card); border:1px solid var(--hairline);
+    border-radius:18px; padding:24px; display:flex; flex-direction:column; gap:18px;
+    box-shadow: 0 1px 0 var(--hairline);
+  }
+  .hero-card h4{font-family:var(--display); font-weight:600; font-size:20px; margin:0; letter-spacing:-.01em}
+  .hero-card p{margin:0; color:var(--muted); font-size:13.5px; line-height:1.55}
+  .availability{display:flex; align-items:center; gap:10px; padding:10px 12px; border:1px solid var(--hairline); border-radius:10px; background:var(--paper)}
+  .availability .dot{width:8px; height:8px; border-radius:50%; background:var(--ok); box-shadow:0 0 0 4px oklch(0.62 0.13 150 / .15)}
+  .availability span{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-2)}
+
+  /* ==== Section header pattern ==== */
+  .section{padding: 140px 0; position:relative}
+  .section + .section{padding-top:0}
+  .section.dark{background:var(--ink); color:var(--paper)}
+  .section.dark .eyebrow{color:#9C9C9F}
+  .section.dark .eyebrow::before{background:#9C9C9F}
+  .section.dark .lede{color:#C9C9CC}
+  .sec-head{
+    display:grid; grid-template-columns: 1fr 1fr; gap:48px; align-items:end;
+    margin-bottom:64px;
+  }
+  .sec-head h2{
+    font-family:var(--display); font-weight:600;
+    font-size: clamp(40px, 5.4vw, 84px);
+    line-height:.98; letter-spacing:-0.03em;
+    margin:0;
+    text-wrap:balance;
+  }
+  .sec-head .right{display:flex; flex-direction:column; gap:18px; align-items:flex-start}
+  .lede{font-size:17px; line-height:1.5; color:var(--ink-2); max-width:52ch}
+
+  /* ==== Products grid ==== */
+  .products{display:grid; grid-template-columns:repeat(12, 1fr); gap:14px}
+  .pcard{
+    grid-column: span 3;
+    aspect-ratio: 4/5;
+    background:var(--card);
+    border:1px solid var(--hairline);
+    border-radius:14px;
+    overflow:hidden; position:relative;
+    display:flex; flex-direction:column;
+    transition: transform .35s ease, box-shadow .35s ease, border-color .25s ease;
+  }
+  .pcard:hover{transform:translateY(-4px); box-shadow:0 14px 30px rgba(20,20,25,.08); border-color:var(--hairline-strong)}
+  .pcard.feature{grid-column: span 6; aspect-ratio: 8/5}
+  .pcard .ph{
+    flex:1; position:relative;
+    background-color:var(--paper-2);
+    background-image: repeating-linear-gradient( -45deg, transparent 0 8px, rgba(0,0,0,.03) 8px 9px );
+    overflow:hidden;
+  }
+  .pcard .ph::before{
+    content:""; position:absolute; inset:18px;
+    border:1px dashed var(--hairline-strong);
+    border-radius:8px;
+  }
+  .pcard .label{
+    position:absolute; left:24px; bottom:24px;
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-2);
+    background:rgba(255,255,255,.85); padding:6px 9px; border-radius:6px; backdrop-filter:blur(4px);
+  }
+  .pcard .meta{
+    padding:18px; display:flex; align-items:center; justify-content:space-between; gap:12px;
+    border-top:1px solid var(--hairline);
+  }
+  .pcard .meta h3{font-family:var(--display); font-weight:600; font-size:19px; margin:0; letter-spacing:-.01em}
+  .pcard .meta .arrow{
+    width:32px; height:32px; border-radius:50%; border:1px solid var(--hairline-strong);
+    display:grid; place-items:center; transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+    font-size:14px;
+  }
+  .pcard:hover .arrow{background:var(--ink); color:var(--paper); border-color:var(--ink); transform:rotate(-45deg)}
+  .pcard .sku{font-family:var(--mono); font-size:10px; letter-spacing:.1em; color:var(--muted); text-transform:uppercase}
+
+  /* feature card big number */
+  .pcard.feature .ph::after{
+    content:""; position:absolute; right:-30%; top:-30%; width:140%; height:140%;
+    background: radial-gradient(closest-side, oklch(0.68 0.17 50 / .25), transparent 70%);
+  }
+  .feature-overlay{
+    position:absolute; inset:0; padding:36px;
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .feature-overlay .big{font-family:var(--display); font-weight:600; font-size:clamp(64px,7vw,128px); letter-spacing:-.04em; line-height:.9}
+  .feature-overlay .cap{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-2)}
+
+  /* ==== Brand marquee ==== */
+  .marquee{
+    border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline);
+    padding:42px 0; overflow:hidden;
+    background:var(--paper);
+  }
+  .marquee-track{display:flex; gap:80px; animation: ticker 32s linear infinite; width:max-content; align-items:center}
+  .brand{
+    font-family:var(--display); font-weight:700; font-size:34px;
+    letter-spacing:-.02em; color:var(--ink-3); white-space:nowrap;
+    display:flex; align-items:center; gap:14px; opacity:.72; transition:opacity .25s ease, color .25s ease;
+  }
+  .brand:hover{opacity:1; color:var(--ink)}
+  .brand .dot{width:7px; height:7px; background:var(--accent); border-radius:50%}
+  .brand i{font-style:normal; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); border:1px solid var(--hairline-strong); padding:4px 8px; border-radius:4px}
+
+  /* ==== Services ==== */
+  .services{display:grid; grid-template-columns:repeat(3, 1fr); gap:14px}
+  .svc{
+    background:var(--card); border:1px solid var(--hairline); border-radius:18px;
+    padding:28px; display:flex; flex-direction:column; gap:24px; min-height:420px;
+    transition: transform .35s ease, box-shadow .35s ease;
+  }
+  .svc:hover{transform:translateY(-4px); box-shadow:0 14px 30px rgba(20,20,25,.07)}
+  .svc-num{
+    font-family:var(--mono); font-size:11px; letter-spacing:.16em; color:var(--muted); text-transform:uppercase;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .svc-num .pill{padding:5px 10px; border:1px solid var(--hairline-strong); border-radius:999px; color:var(--ink-2)}
+  .svc h3{font-family:var(--display); font-weight:600; font-size:30px; line-height:1.05; letter-spacing:-.01em; margin:0; text-wrap:balance}
+  .svc p{margin:0; color:var(--muted); font-size:14.5px; line-height:1.55}
+  .svc .glyph{
+    height:110px; border-radius:12px; background:var(--paper-2);
+    background-image: repeating-linear-gradient(-45deg, transparent 0 8px, rgba(0,0,0,.04) 8px 9px);
+    border:1px solid var(--hairline);
+    display:grid; place-items:center;
+    font-family:var(--display); font-weight:700; font-size:60px; color:var(--ink); letter-spacing:-.02em;
+    position:relative; overflow:hidden;
+  }
+  .svc .glyph::after{content:""; position:absolute; right:-20%; bottom:-30%; width:80%; height:80%; background:radial-gradient(closest-side, oklch(0.68 0.17 50 / .35), transparent 70%)}
+  .svc .link{display:inline-flex; gap:10px; align-items:center; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); margin-top:auto}
+  .svc .link .arr{display:inline-block; transition:transform .25s ease}
+  .svc:hover .link .arr{transform:translateX(4px)}
+
+  /* ==== Stats (dark) ==== */
+  .section.dark .sec-head h2{color:var(--paper)}
+  .stats{display:grid; grid-template-columns: repeat(4, 1fr); gap:0; border-top:1px solid #2A2A2E}
+  .stat{padding:48px 24px 32px 0; border-right:1px solid #2A2A2E; position:relative}
+  .stat:last-child{border-right:0}
+  .stat .num{font-family:var(--display); font-weight:600; font-size:clamp(56px, 6vw, 104px); letter-spacing:-.04em; line-height:.95}
+  .stat .num .unit{color:var(--accent); font-style:italic; font-weight:500}
+  .stat .lbl{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#9C9C9F; margin-top:14px}
+  .stat .desc{margin-top:14px; color:#C9C9CC; font-size:14px; line-height:1.5; max-width:30ch}
+
+  /* ==== Quote ==== */
+  .quote-block{
+    border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline);
+    padding:120px 0;
+  }
+  .quote{
+    font-family:var(--display); font-weight:500; font-size:clamp(36px, 4.4vw, 68px);
+    line-height:1.05; letter-spacing:-.025em; max-width: 22ch; text-wrap:balance;
+  }
+  .quote span.mark{color:var(--accent-ink); font-style:italic}
+  .quote-attr{margin-top:48px; display:flex; align-items:center; gap:16px; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3)}
+  .quote-attr .who{color:var(--ink); letter-spacing:.04em; font-weight:500}
+  .quote-attr .bar{width:36px; height:1px; background:var(--ink-3)}
+
+  /* ==== Partner cards ==== */
+  .partner-grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+  .partner{
+    border-radius:18px; padding:32px; min-height:380px;
+    display:flex; flex-direction:column; gap:20px; position:relative; overflow:hidden;
+    transition: transform .35s ease;
+  }
+  .partner:hover{transform:translateY(-4px)}
+  .partner.a{background:var(--ink); color:var(--paper)}
+  .partner.b{background:var(--accent); color:var(--ink)}
+  .partner.c{background:var(--card); color:var(--ink); border:1px solid var(--hairline)}
+  .partner h3{font-family:var(--display); font-weight:600; font-size:36px; line-height:1; letter-spacing:-.02em; margin:0; text-wrap:balance}
+  .partner p{margin:0; opacity:.85; font-size:14.5px; line-height:1.55; max-width:28ch}
+  .partner .index{font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; opacity:.7; display:flex; justify-content:space-between}
+  .partner .arrow-cta{
+    margin-top:auto; display:inline-flex; gap:12px; align-items:center;
+    font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+  }
+  .partner .arrow-cta .circle{
+    width:40px; height:40px; border-radius:50%; display:grid; place-items:center;
+    border:1px solid currentColor; transition:transform .25s ease;
+  }
+  .partner:hover .arrow-cta .circle{transform:rotate(-45deg)}
+  .partner.b .index, .partner.c .index{color:var(--ink-3); opacity:.8}
+
+  /* ==== Insights / blogs ==== */
+  .insights{display:grid; grid-template-columns: repeat(2, 1fr); gap:14px}
+  .insight{
+    background:var(--card); border:1px solid var(--hairline); border-radius:18px;
+    overflow:hidden; display:flex; flex-direction:column;
+    transition: transform .35s ease, box-shadow .35s ease;
+  }
+  .insight:hover{transform:translateY(-4px); box-shadow:0 14px 30px rgba(20,20,25,.07)}
+  .insight .img{
+    aspect-ratio: 16/8; background:var(--paper-2);
+    background-image: repeating-linear-gradient(-45deg, transparent 0 8px, rgba(0,0,0,.04) 8px 9px);
+    position:relative;
+  }
+  .insight .img::after{content:attr(data-label); position:absolute; left:20px; bottom:20px; font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-2); background:rgba(255,255,255,.85); padding:6px 9px; border-radius:6px}
+  .insight .body{padding:28px; display:flex; flex-direction:column; gap:14px}
+  .insight .meta{display:flex; gap:16px; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+  .insight h3{font-family:var(--display); font-weight:600; font-size:26px; line-height:1.1; letter-spacing:-.015em; margin:0; text-wrap:balance}
+  .insight .read{display:inline-flex; gap:10px; align-items:center; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); margin-top:6px}
+
+  /* ==== Final CTA ==== */
+  .cta{
+    margin: 0 var(--pad);
+    background:var(--ink); color:var(--paper);
+    border-radius:24px;
+    padding: clamp(56px, 8vw, 120px) clamp(28px, 5vw, 80px);
+    display:grid; grid-template-columns: 1.4fr 1fr; gap:64px; align-items:end;
+    position:relative; overflow:hidden;
+  }
+  .cta::before{
+    content:""; position:absolute; right:-200px; top:-200px; width:600px; height:600px;
+    background: radial-gradient(closest-side, oklch(0.68 0.17 50 / .35), transparent 70%);
+    pointer-events:none;
+  }
+  .cta h2{font-family:var(--display); font-weight:600; font-size:clamp(48px, 6vw, 96px); letter-spacing:-.03em; line-height:.96; margin:0; text-wrap:balance}
+  .cta h2 em{font-style:italic; color:var(--accent); font-weight:500}
+  .cta-info{display:flex; flex-direction:column; gap:24px}
+  .info-row{display:flex; flex-direction:column; gap:6px; padding:16px 0; border-top:1px solid #2A2A2E}
+  .info-row:last-child{border-bottom:1px solid #2A2A2E}
+  .info-row .k{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#9C9C9F}
+  .info-row .v{font-family:var(--display); font-weight:500; font-size:22px; letter-spacing:-.01em}
+  .cta .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:24px}
+  .cta .btn-primary{background:var(--paper); color:var(--ink)}
+  .cta .btn-primary:hover{background:var(--accent); color:var(--ink)}
+  .cta .btn-ghost{border-color:#3A3A40; color:var(--paper)}
+  .cta .btn-ghost:hover{background:var(--paper); color:var(--ink); border-color:var(--paper)}
+
+  /* ==== Footer ==== */
+  footer{padding:96px 0 32px}
+  .foot-grid{display:grid; grid-template-columns: 1.6fr .8fr .8fr .9fr; gap:48px; padding-bottom:64px; border-bottom:1px solid var(--hairline)}
+  .foot-brand p{color:var(--muted); font-size:14.5px; max-width:36ch; line-height:1.55; margin:18px 0 0}
+  .foot-col h5{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin:0 0 18px; font-weight:500}
+  .foot-col ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px}
+  .foot-col a{font-size:15px; color:var(--ink-2)}
+  .foot-col a:hover{color:var(--accent-ink)}
+  .foot-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:24px; font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+  .foot-bottom .links{display:flex; gap:18px}
+
+  /* big footer wordmark */
+  .big-mark{
+    font-family:var(--display); font-weight:700;
+    font-size: clamp(80px, 18vw, 320px);
+    letter-spacing:-.04em; line-height:.86;
+    color:transparent; -webkit-text-stroke:1px var(--hairline-strong);
+    margin: 64px 0 -10px;
+    user-select:none;
+    text-align:left;
+  }
+
+  /* ===== Reveal animation ===== */
+  .reveal{opacity:0; transform:translateY(18px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1; transform:none}
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1100px){
+    .hero-grid{grid-template-columns: 1fr; gap:36px}
+    .sec-head{grid-template-columns: 1fr; gap:20px}
+    .pcard, .pcard.feature{grid-column: span 6}
+    .services{grid-template-columns:1fr 1fr}
+    .partner-grid{grid-template-columns:1fr 1fr}
+    .stats{grid-template-columns: 1fr 1fr; row-gap:0}
+    .stat{border-right:0; border-bottom:1px solid #2A2A2E}
+    .stat:nth-child(2n){border-right:0}
+    .insights{grid-template-columns:1fr}
+    .cta{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns: 1fr 1fr}
+  }
+  @media (max-width: 720px){
+    .nav-links{display:none}
+    .util .left{gap:14px}
+    .util .left span:nth-child(3){display:none}
+    .pcard, .pcard.feature{grid-column: span 12; aspect-ratio: 5/3}
+    .services{grid-template-columns:1fr}
+    .partner-grid{grid-template-columns:1fr}
+    .stats{grid-template-columns: 1fr}
+    .stat{padding:32px 0}
+    .foot-grid{grid-template-columns: 1fr}
+    .section{padding:96px 0}
+    .hero{padding-top:48px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Top utility bar ===== -->
+<div class="util">
+  <div class="wrap row">
+    <div class="left">
+      <span><span class="pulse"></span>&nbsp;&nbsp;Kabrai hub · Mahoba Road</span>
+      <span>Mon–Sat · 09:00–18:00</span>
+    </div>
+    <div class="right">
+      <a href="mailto:sales@nayabharatengineering.com">sales@nayabharatengineering.com</a>
+      <span style="opacity:.4">·</span>
+      <a href="tel:+917827928282">+91 78279 28282</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Nav ===== -->
+<header class="nav">
+  <div class="wrap row">
+    <a class="logo" href="#">
+      <div class="logo-mark">N</div>
+      <div class="logo-text">
+        <b>Naya Bharat</b>
+        <span>Engineering</span>
+      </div>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#products" class="has-caret">Products</a>
+      <a href="#services" class="has-caret">Services</a>
+      <a href="#partners" class="has-caret">Partnership</a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="#contact">Talk to sales</a>
+      <a class="btn btn-primary" href="#contact">
+        Free consult
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="reveal">
+        <div class="eyebrow" style="margin-bottom:28px">Mining · Crushing · Heavy construction</div>
+        <h1 class="display">
+          Spares that<br>
+          <span class="accent">keep plants</span><br>
+          <span class="stroke">moving.</span>
+        </h1>
+        <div class="hero-tags">
+          <span class="tag"><span class="dot"></span>Crusher parts</span>
+          <span class="tag">Excavator spares</span>
+          <span class="tag">OTR tyres</span>
+          <span class="tag">Lubricants</span>
+          <span class="tag">Conveyor systems</span>
+          <span class="tag">Welding consumables</span>
+          <span class="tag">+4 more</span>
+        </div>
+      </div>
+
+      <div class="hero-meta reveal">
+        <p class="hero-lede">
+          <b>A retail and B2B hub for mining and crushing spares</b> — bringing branded parts, lubricants, and consumables onto one organised shelf, so plant downtime turns back into uptime.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#products">Browse catalog <span class="arrow">→</span></a>
+          <a class="btn btn-ghost" href="#contact">Request a quote</a>
+        </div>
+        <div class="hero-card" style="margin-top:8px">
+          <div class="availability">
+            <span class="dot"></span>
+            <span>Dispatch hub · Kabrai, Uttar Pradesh</span>
+          </div>
+          <div>
+            <h4 style="margin-bottom:6px">Need a part fast?</h4>
+            <p>Share your model number or part requirement. Our team will confirm availability and get back to you with a quote.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ticker rail -->
+    <div class="hero-rail" aria-hidden="true">
+      <div class="ticker">
+        <div><span>Crusher Parts</span></div><div class="sep"></div>
+        <div><span>Lubricants</span></div><div class="sep"></div>
+        <div><span>Excavator Spares</span></div><div class="sep"></div>
+        <div><span>Rock Breaker Parts</span></div><div class="sep"></div>
+        <div><span>OTR Tyres</span></div><div class="sep"></div>
+        <div><span>Welding Consumables</span></div><div class="sep"></div>
+        <div><span>V-Belts &amp; Bearings</span></div><div class="sep"></div>
+        <div><span>Conveyor Belts</span></div><div class="sep"></div>
+        <!-- repeat -->
+        <div><span>Crusher Parts</span></div><div class="sep"></div>
+        <div><span>Lubricants</span></div><div class="sep"></div>
+        <div><span>Excavator Spares</span></div><div class="sep"></div>
+        <div><span>Rock Breaker Parts</span></div><div class="sep"></div>
+        <div><span>OTR Tyres</span></div><div class="sep"></div>
+        <div><span>Welding Consumables</span></div><div class="sep"></div>
+        <div><span>V-Belts &amp; Bearings</span></div><div class="sep"></div>
+        <div><span>Conveyor Belts</span></div><div class="sep"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS ===== -->
+<section class="section" id="products">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Ten categories.<br>One reliable shelf.</h2>
+      <div class="right">
+        <div class="eyebrow">01 — Catalog</div>
+        <p class="lede">From manganese castings to mobil greases, every line we stock is what plant operators actually run on the ground. Branded, traceable, and never out for long.</p>
+        <a class="btn btn-ghost" href="#">View full catalog <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <div class="products reveal">
+      <article class="pcard feature">
+        <div class="ph">
+          <span class="label">Crusher · Manganese castings</span>
+          <div class="feature-overlay">
+            <div class="cap">Featured / Most ordered</div>
+            <div>
+              <div class="big">Jaw &amp;<br><em style="font-style:italic;color:var(--accent-ink)">Cone parts</em></div>
+            </div>
+          </div>
+        </div>
+        <div class="meta">
+          <h3>Crusher Parts</h3>
+          <span class="arrow">→</span>
+        </div>
+      </article>
+
+      <article class="pcard">
+        <div class="ph"><span class="label">Mobil · Castrol</span></div>
+        <div class="meta"><h3>Lubricants</h3><span class="arrow">→</span></div>
+      </article>
+
+      <article class="pcard">
+        <div class="ph"><span class="label">JCB · Tata Hitachi · Komatsu fit</span></div>
+        <div class="meta"><h3>Excavator Spares</h3><span class="arrow">→</span></div>
+      </article>
+
+      <article class="pcard">
+        <div class="ph"><span class="label">Chisels · Bushings · Seals</span></div>
+        <div class="meta"><h3>Rock Breaker Parts</h3><span class="arrow">→</span></div>
+      </article>
+
+      <article class="pcard">
+        <div class="ph"><span class="label">Unbrako · grade 8.8 / 10.9</span></div>
+        <div class="meta"><h3>Nuts &amp; Bolts</h3><span class="arrow">→</span></div>
+      </article>
+
+      <article class="pcard">
+        <div class="ph"><span class="label">Victor electrodes &amp; wire</span></div>
+        <div class="meta"><h3>Welding Consumables</h3><span class="arrow">→</span></div>
+      </article>
+
+      <article class="pcard">
+        <div class="ph"><span class="label">Pix · Turboflex · SKF</span></div>
+        <div class="meta"><h3>V-Belts, Pulleys &amp; Bearings</h3><span class="arrow">→</span></div>
+      </article>
+
+      <article class="pcard">
+        <div class="ph"><span class="label">JK · BKT · 17.5–24" sizes</span></div>
+        <div class="meta"><h3>OTR Tyres</h3><span class="arrow">→</span></div>
+      </article>
+
+      <article class="pcard">
+        <div class="ph"><span class="label">Leaf springs · Bushes · Pins</span></div>
+        <div class="meta"><h3>Truck Suspension</h3><span class="arrow">→</span></div>
+      </article>
+
+      <article class="pcard">
+        <div class="ph"><span class="label">Retuff belting · Idlers</span></div>
+        <div class="meta"><h3>Conveyor Belts &amp; Rollers</h3><span class="arrow">→</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Brand marquee ===== -->
+<div class="marquee" id="about">
+  <div class="marquee-track" aria-hidden="true">
+    <span class="brand"><span class="dot"></span>Mobil <i>Lubricants</i></span>
+    <span class="brand">Victor <i>Welding</i></span>
+    <span class="brand"><span class="dot"></span>JK Tyre <i>OTR</i></span>
+    <span class="brand">Pix <i>V-Belts</i></span>
+    <span class="brand"><span class="dot"></span>Unbrako <i>Fasteners</i></span>
+    <span class="brand">Bharat Rocks <i>Castings</i></span>
+    <span class="brand"><span class="dot"></span>IndiMAN <i>Spares</i></span>
+    <span class="brand">Retuff <i>Conveyor</i></span>
+    <span class="brand"><span class="dot"></span>Turboflex <i>Drives</i></span>
+    <!-- repeat for seamless loop -->
+    <span class="brand"><span class="dot"></span>Mobil <i>Lubricants</i></span>
+    <span class="brand">Victor <i>Welding</i></span>
+    <span class="brand"><span class="dot"></span>JK Tyre <i>OTR</i></span>
+    <span class="brand">Pix <i>V-Belts</i></span>
+    <span class="brand"><span class="dot"></span>Unbrako <i>Fasteners</i></span>
+    <span class="brand">Bharat Rocks <i>Castings</i></span>
+    <span class="brand"><span class="dot"></span>IndiMAN <i>Spares</i></span>
+    <span class="brand">Retuff <i>Conveyor</i></span>
+    <span class="brand"><span class="dot"></span>Turboflex <i>Drives</i></span>
+  </div>
+</div>
+
+<!-- ===== Services ===== -->
+<section class="section" id="services" style="padding-top:140px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Beyond parts —<br>support that shows up.</h2>
+      <div class="right">
+        <div class="eyebrow">02 — Services</div>
+        <p class="lede">A spare on a shelf is half the job. Our field engineers, plant surveyors, and rental fleet round out the picture — so a breakdown is a hiccup, not a halt.</p>
+      </div>
+    </div>
+
+    <div class="services reveal">
+      <article class="svc">
+        <div class="svc-num">
+          <span>S/01</span>
+        </div>
+        <div class="glyph">⌗</div>
+        <h3>Buy &amp; sell used equipment</h3>
+        <p>A vetted marketplace for crushers, excavators, screens, and conveyors — listed with hours, condition reports, and ownership history.</p>
+        <a class="link" href="#">Explore listings <span class="arr">→</span></a>
+      </article>
+
+      <article class="svc">
+        <div class="svc-num">
+          <span>S/02</span>
+        </div>
+        <div class="glyph">⏱</div>
+        <h3>Rent equipment</h3>
+        <p>Bridge a delivery gap, take on a short job, or pilot a new spec. Rentals on excavators, breakers, and material handlers — fully serviced.</p>
+        <a class="link" href="#">Browse rentals <span class="arr">→</span></a>
+      </article>
+
+      <article class="svc">
+        <div class="svc-num">
+          <span>S/03</span>
+        </div>
+        <div class="glyph">↗</div>
+        <h3>Plant survey &amp; stock consultancy</h3>
+        <p>Our team walks your plant, audits consumption, and writes the stocking plan that quietly eliminates the "we ran out" emergencies.</p>
+        <a class="link" href="#">Book a survey <span class="arr">→</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Stats (dark) ===== -->
+<section class="section dark">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>The shelf,<br>by the numbers.</h2>
+      <div class="right">
+        <div class="eyebrow">03 — Scale</div>
+        <p class="lede">A retail and B2B hub for mining and crushing spares — built to bring branded parts, lubricants, and consumables onto one organised shelf for plant operators.</p>
+      </div>
+    </div>
+
+    <div class="stats reveal">
+      <div class="stat">
+        <div class="num" data-count="10" data-suffix="+">10<span class="unit">+</span></div>
+        <div class="lbl">Trusted brands</div>
+        <p class="desc">From Mobil to JK Tyre — the OEM-grade names plant managers actually order.</p>
+      </div>
+      <div class="stat">
+        <div class="num" data-count="1500" data-suffix="+">1,500<span class="unit">+</span></div>
+        <div class="lbl">SKUs in stock</div>
+        <p class="desc">Inventory that maps to what India's mining and crushing plants run today.</p>
+      </div>
+      <div class="stat">
+        <div class="num" data-count="98" data-suffix="%">98<span class="unit">%</span></div>
+        <div class="lbl">Order fill rate</div>
+        <p class="desc">Same-day or next-day fulfilment across our distribution belt.</p>
+      </div>
+      <div class="stat">
+        <div class="num">24<span class="unit">/7</span></div>
+        <div class="lbl">Field support</div>
+        <p class="desc">A WhatsApp away from your service engineer — quotes, fitments, dispatch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== About / principles (dark) ===== -->
+<section class="section dark">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Quietly reliable.<br>That's the whole idea.</h2>
+      <div class="right">
+        <div class="eyebrow">04 — How we work</div>
+        <p class="lede">A serious supplier should be unremarkable in the best way: the right part, the right brand, when you need it. That's what we're building.</p>
+      </div>
+    </div>
+
+    <div class="stats reveal">
+      <div class="stat">
+        <div class="num" style="font-size:clamp(36px,3.6vw,64px); line-height:1.05">Branded<br>only.</div>
+        <div class="lbl">Sourcing</div>
+        <p class="desc">We stock names plant managers already know — no unbranded substitutes slipped onto your shelf.</p>
+      </div>
+      <div class="stat">
+        <div class="num" style="font-size:clamp(36px,3.6vw,64px); line-height:1.05">One<br>shelf.</div>
+        <div class="lbl">Catalog</div>
+        <p class="desc">Crusher parts, lubricants, OTR tyres, fasteners, conveyor — under one roof, not chased from ten suppliers.</p>
+      </div>
+      <div class="stat">
+        <div class="num" style="font-size:clamp(36px,3.6vw,64px); line-height:1.05">Plant-<br>first.</div>
+        <div class="lbl">Service</div>
+        <p class="desc">We talk fitment and consumption — not just SKUs. Our team walks your plant before they quote.</p>
+      </div>
+      <div class="stat">
+        <div class="num" style="font-size:clamp(36px,3.6vw,64px); line-height:1.05">Direct<br>contact.</div>
+        <div class="lbl">Support</div>
+        <p class="desc">A real person on call — phone or WhatsApp — for quotes, fitments, and dispatch updates.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Become a partner ===== -->
+<section class="section" id="partners" style="padding-top:140px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Build the network<br>with us.</h2>
+      <div class="right">
+        <div class="eyebrow">05 — Partnership</div>
+        <p class="lede">We're building a retail and service network for mining spares — and we're looking for partners across the country to grow with us.</p>
+      </div>
+    </div>
+
+    <div class="partner-grid reveal">
+      <article class="partner a">
+        <div class="index"><span>P/01 — Vendor</span><span>Open</span></div>
+        <h3>Become a vendor</h3>
+        <p>Manufacture quality castings, consumables, or spares? Plug into a distribution network focused on plant operators across the mining belt.</p>
+        <div class="arrow-cta">
+          <span>Apply as vendor</span>
+          <span class="circle">→</span>
+        </div>
+      </article>
+      <article class="partner b">
+        <div class="index"><span>P/02 — Retailer</span><span>Bulk pricing</span></div>
+        <h3>Buy in bulk &amp; resell</h3>
+        <p>Local retailers and sub-dealers get unified pricing, fast replenishment, and co-branded marketing across the catalog.</p>
+        <div class="arrow-cta">
+          <span>Become a retailer</span>
+          <span class="circle">→</span>
+        </div>
+      </article>
+      <article class="partner c">
+        <div class="index"><span>P/03 — Franchise</span><span>By region</span></div>
+        <h3>Open an NBE franchise</h3>
+        <p>Run the only organised parts &amp; service shop in your district. We bring the system, brand, training, and inventory.</p>
+        <div class="arrow-cta">
+          <span>Explore franchise</span>
+          <span class="circle">→</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ===== Final CTA ===== -->
+<section style="padding:60px 0 140px" id="contact">
+  <div class="cta reveal">
+    <div>
+      <div class="eyebrow" style="color:#9C9C9F; margin-bottom:32px"><span style="background:#9C9C9F"></span>07 — Get in touch</div>
+      <h2>Tell us what's<br>on your <em>shopping list.</em></h2>
+      <div class="actions">
+        <a class="btn btn-primary" href="#">Send us a part list <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="#">Book a plant visit</a>
+      </div>
+    </div>
+    <div class="cta-info">
+      <div class="info-row">
+        <span class="k">Sales · Mon–Sat</span>
+        <span class="v">+91 78279 28282</span>
+      </div>
+      <div class="info-row">
+        <span class="k">Email — replies in 24h</span>
+        <span class="v">sales@nayabharatengineering.com</span>
+      </div>
+      <div class="info-row">
+        <span class="k">Hub</span>
+        <span class="v">Maa Mansha Granite, Mahoba Road,<br>Kabrai — 210424</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="#">
+          <div class="logo-mark">N</div>
+          <div class="logo-text">
+            <b>Naya Bharat</b>
+            <span>Engineering</span>
+          </div>
+        </a>
+        <p>A retail and B2B hub for mining, crushing, and heavy construction spares — built to turn plant downtime into uptime.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Catalog</h5>
+        <ul>
+          <li><a href="#">Crusher Parts</a></li>
+          <li><a href="#">Excavator Spares</a></li>
+          <li><a href="#">Lubricants</a></li>
+          <li><a href="#">Conveyor Systems</a></li>
+          <li><a href="#">All categories →</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#partners">Become a partner</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Reach us</h5>
+        <ul>
+          <li><a href="tel:+917827928282">+91 78279 28282</a></li>
+          <li><a href="mailto:sales@nayabharatengineering.com">sales@nayabharatengineering.com</a></li>
+          <li><a href="#">WhatsApp →</a></li>
+          <li><a href="#">Instagram →</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="big-mark" aria-hidden="true">NAYA · BHARAT</div>
+
+    <div class="foot-bottom">
+      <span>© Naya Bharat Engineering · Kabrai, UP</span>
+      <div class="links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Animate counters
+  const formatNum = (n) => n.toLocaleString('en-IN');
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    const dur = 1400;
+    const start = performance.now();
+    function tick(t) {
+      const p = Math.min(1, (t - start) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const v = Math.round(target * eased);
+      el.innerHTML = formatNum(v) + '<span class="unit">' + suffix + '</span>';
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const cio = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting && e.target.dataset.count) {
+        animateCounter(e.target);
+        cio.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat .num[data-count]').forEach(el => cio.observe(el));
+</script>
+</body>
+</html>
