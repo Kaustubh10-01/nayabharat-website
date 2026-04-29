@@ -4,7 +4,7 @@ Modernized homepage for [Naya Bharat Engineering](http://nayabharatengineering.c
 
 ## Live site
 
-> _URL will be added here once GitHub Pages finishes its first build._
+[https://kaustubh10-01.github.io/nayabharat-website/](https://kaustubh10-01.github.io/nayabharat-website/)
 
 ## Stack
 
